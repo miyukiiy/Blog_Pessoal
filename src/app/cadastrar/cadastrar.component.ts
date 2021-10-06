@@ -15,11 +15,11 @@ export class CadastrarComponent implements OnInit {
   tipoUsuario: string
 
   constructor(
-    private authService: AuthService,
+    private auth: AuthService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     window.scroll(0,0)
   }
 
@@ -38,7 +38,7 @@ export class CadastrarComponent implements OnInit {
     if(this.user.senha != this.confirmarSenha){
       alert('A senhas estão incorretas!')
     } else{
-      this.authService.cadastrar(this.user).subscribe((resp: User) => {
+      this.auth.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(['/entrar'])
         alert('Usuario cadastrado com sucesso!')
